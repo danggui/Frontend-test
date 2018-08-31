@@ -1,6 +1,10 @@
-var path=require('path');
-var HtmlwebpackPlugin = require('html-webpack-plugin');
-var MiniCssExtractPlugin = require("mini-css-extract-plugin");
+let path=require('path');
+let HtmlwebpackPlugin = require('html-webpack-plugin');
+let MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const Happypack = require('happypack');
+const happypackThreadPool = Happypack.ThreadPool({size:4});//size:os.cpus().Lengt根据电脑的idle，配置当前最大的线程数量
+
 
 module.exports = {
     entry:{
@@ -14,6 +18,11 @@ module.exports = {
         filename:'bundle.js',
         path:path.resolve(__dirname,'build'),
     },
+    optimization: {
+        minimizer: [
+          new UglifyJsPlugin()
+        ]
+      },
 
     module:{
         rules:[
@@ -41,11 +50,27 @@ module.exports = {
                 "css-loader","postcss-loader","sass-loader"
               ],
         },
-        {   //配置辅助loader
-            test:/\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/,
+        {   //配置辅助loader,处理图片  
+            test:/\.(png|jpg|gif)$/,
             loader:'url-loader',
-            options:{limit:8091}
-        }
+            options:{limit:8192,name:"images/[name].[ext]"}
+        },
+        { //处理图片外的其他文件类型
+            test:/\.(appcache|svg|eot|ttf|woff|woff2|mp3|pdf)(\?|$)/,
+            include:path.resolve(__dirname,'src'),
+            loader:'file-loader?name=[name].[ext]' 
+        },
+        {
+            test:/\.js$/,
+            enforce:'pre',
+            loader:'eslint-loader',
+            include:path.resolve(__dirname,'src')
+        },
+        {
+            test: /\.jsx?$/,
+            exclude: /node_modules/,
+            use: 'happypack/loader?id=happybabel',
+        },
     ]
     },
 
@@ -70,12 +95,23 @@ module.exports = {
         new MiniCssExtractPlugin({
             filename: "style.css",
           }),
+
+        new Happypack({
+            id:'happybabel',
+            loaders:['babel-loader'],
+            threadPool:happypackThreadPool,
+            verbose:true
+        }),
+       
+
+        
         //new webpack.HotModuleReplacementPlugin()//热更新配套插件
     
         ],
         
 resolve:{
     extensions:['.js','jsx','less','.css','.scss']//后缀名自动补全
-}
+},
+devtool:'eval-soure-map',
 
 }
