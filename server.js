@@ -28,5 +28,5 @@ server.app.get('*',function(req,res){
     res.sendFile(__dirname+'/build/index.html');
 });
 server.listen(8080,function(){
- console.log('正常打开8080端口')
+ 
 });

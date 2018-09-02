@@ -1,9 +1,12 @@
 let path=require('path');
 let HtmlwebpackPlugin = require('html-webpack-plugin');
-let MiniCssExtractPlugin = require("mini-css-extract-plugin");
+let MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const webpack = require('webpack');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const Happypack = require('happypack');
 const happypackThreadPool = Happypack.ThreadPool({size:4});//size:os.cpus().Lengt根据电脑的idle，配置当前最大的线程数量
+const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
+
 
 
 module.exports = {
@@ -22,24 +25,34 @@ module.exports = {
         minimizer: [
           new UglifyJsPlugin()
         ]
-      },
-
+    },
+      
+    
     module:{
         rules:[
+        {
+                test: /\.html$/,
+                use: [ {
+                  loader: 'html-loader',
+                  options: {
+                    minimize: true
+                  }
+                }],
+        },
         {
             test:/\.css$/,
             //use:['style-loader','css-loader'],
             use: [
                 MiniCssExtractPlugin.loader,
-                "css-loader",
-                "postcss-loader"
+                'css-loader',
+                'postcss-loader'
               ],
         },
         {
             test:/\.less$/,        
             use: [
                 MiniCssExtractPlugin.loader,
-                "css-loader","postcss-loader","less-loader"
+                'css-loader','postcss-loader','less-loader'
               ],
     
         },
@@ -47,13 +60,13 @@ module.exports = {
             test:/\.scss$/,        
             use: [
                 MiniCssExtractPlugin.loader,
-                "css-loader","postcss-loader","sass-loader"
+                'css-loader','postcss-loader','sass-loader'
               ],
         },
         {   //配置辅助loader,处理图片  
             test:/\.(png|jpg|gif)$/,
             loader:'url-loader',
-            options:{limit:8192,name:"images/[name].[ext]"}
+            options:{limit:8192,name:'images/[name].[ext]'}
         },
         { //处理图片外的其他文件类型
             test:/\.(appcache|svg|eot|ttf|woff|woff2|mp3|pdf)(\?|$)/,
@@ -67,17 +80,32 @@ module.exports = {
             include:path.resolve(__dirname,'src')
         },
         {
-            test: /\.jsx?$/,
+            test: /\.js$/, 
+            loader: 'babel-loader', 
+            exclude: /node_modules/,
+           
+           
+        },
+        {
+            test: /\.jsx$/,
             exclude: /node_modules/,
             use: 'happypack/loader?id=happybabel',
+
+             
         },
+        
     ]
     },
 
     plugins:[
         new HtmlwebpackPlugin({
             title:'Frontend',
-            filename: "index.html",
+            filename: 'index.html',
+            template:'src/index.html', 
+            hash:true,//防止缓存
+            minify:{
+                removeAttributeQuotes:true//压缩 去掉引号
+            }
            /* 全部都是可选项
             template:'', 模板文件路径
             inject:true|'body'|'head'|'false', 设置为 true|'body':js文件引入的位置为body的结束标签之前
@@ -91,17 +119,31 @@ module.exports = {
             excludeChunks: 允许跳过模型块，比如单元测试块
           */
         }),
+
+        new AddAssetHtmlPlugin({
+            filepath: path.resolve(__dirname,'./build/vendor.dll.js'),
+            includeSourcemap: false,
+            hash: true,
+
+        }),
        
         new MiniCssExtractPlugin({
-            filename: "style.css",
+            filename: 'style.css',
           }),
 
         new Happypack({
             id:'happybabel',
             loaders:['babel-loader'],
             threadPool:happypackThreadPool,
+            cache:true,
             verbose:true
         }),
+        new webpack.DllReferencePlugin({
+            context: __dirname,
+            manifest: require('./build/manifest.json'),
+        }),
+  
+
        
 
         
@@ -114,4 +156,4 @@ resolve:{
 },
 devtool:'eval-soure-map',
 
-}
+};
