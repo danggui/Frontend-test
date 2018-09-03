@@ -44,7 +44,7 @@ module.exports = {
             //use:['style-loader','css-loader'],
             use: [
                 MiniCssExtractPlugin.loader,
-                'css-loader',
+                'css-loader?modules',
                 'postcss-loader'
               ],
         },
@@ -64,7 +64,7 @@ module.exports = {
               ],
         },
         {   //配置辅助loader,处理图片  
-            test:/\.(png|jpg|gif)$/,
+            test:/\.(png|jpg|gif|svg)$/,
             loader:'url-loader',
             options:{limit:8192,name:'images/[name].[ext]'}
         },

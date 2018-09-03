@@ -5,15 +5,15 @@ import {
     Link,
     Switch
   } from 'react-router-dom';
-  import {Player,FullRoster} from './Player';
+import {Player,FullRoster} from '../player/Player';
 
 
 class Roster extends React.Component {
     render(){
         return (
             <Switch>
-            <Route exact path='/roster' component={FullRoster}/>
-            <Route path='/roster/:number' component={Player}/>
+            <Route exact path='/edit' component={FullRoster}/>
+            <Route path='/edit/:number' component={Player}/>
           </Switch>
         );
     }

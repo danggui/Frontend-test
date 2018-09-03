@@ -1,0 +1,29 @@
+.left{
+    width: 10%;
+    background-color: #f9f9f9;
+  }
+
+  .nav{
+      margin: 2rem 0;
+  }
+
+  .icon{
+      width: 1rem;
+      margin-right: 0.5rem;
+  }
+
+  .ul{
+    position: relative
+}
+  .li{
+    height: 2.5rem;
+    line-height: 2.5rem;
+  }
+  .li_on{
+    border-left: 0.5rem solid #fcce01;
+  }
+
+  .li a{
+      position: absolute;
+      left: 30%;
+  }

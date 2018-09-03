@@ -1,0 +1,8 @@
+.main{
+    display: flex;
+    text-align: center;
+    height: calc(100% - 4rem);
+}
+.max_height{
+    height: 100%;
+}

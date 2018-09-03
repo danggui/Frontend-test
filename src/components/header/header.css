@@ -1,0 +1,127 @@
+.header {
+    background: #4c4c4c;
+    color: #c8c9cb;
+}
+
+.header:after {
+	display: table;
+	clear: both;
+}
+
+.header__main {
+	padding: 0  1rem
+}
+
+.header__main:after {
+	display: table;
+	clear: both;
+	content: ""
+}
+
+@media (min-width:768px) {
+	.header__main {
+		padding: 0 3%
+	}
+}
+
+
+.header__brand {
+	width: 11rem;
+	height: 4rem;
+	float: left
+}
+
+.header__brand:lang(zh-cn) {
+	width: auto
+}
+
+@media (min-width:768px) {
+	.header__brand {
+		width: 11rem
+	}
+
+	.header__brand:lang(zh-cn) {
+		width: auto
+	}
+}
+
+
+.header__icon_brand {
+	width: 10.188rem;
+	height: 1.75rem;
+	margin-top: 1.125rem;
+	color: #fcce01;
+	fill: #fff
+}
+
+@media (min-width:1025px) {
+	.header__icon_brand {
+		width: 11.625rem;
+		height: 2rem;
+		margin-top: 1rem
+	}
+}
+
+.header__icon_brand-desktop {
+	display: none
+}
+
+@media (min-width:1025px) {
+	.header__icon_brand-desktop {
+		display: block
+	}
+}
+
+.header__icon_brand-desktop:lang(zh-cn) {
+	width: 14.75rem
+}
+
+.header__icon_brand-mobile {
+	display: block
+}
+
+@media (min-width:1025px) {
+	.header__icon_brand-mobile {
+		display: none
+	}
+}
+
+.header__icon_brand-mobile:lang(zh-cn) {
+	width: 5.5rem;
+	height: 1.75rem
+}
+
+.header__icon_menu,.header__icon_phone,.header__icon_search {
+	width: 1.5rem;
+	height: 4rem;
+	fill: #c8c9cb
+}
+
+.header__icon_search-input {
+	position: absolute;
+	top: 1rem;
+	left: 1rem;
+	width: 1.5rem;
+	height: 1.5rem;
+	fill: #38b2a6
+}
+
+@media only screen and (max-width:767px) {
+	.header__icon_phone {
+		display: none
+	}
+}
+
+@media (min-width:1025px) {
+	.header__icon_phone {
+		display: none
+	}
+}
+
+
+.header_out {
+   float:right;
+   height:4rem;
+   line-height: 4rem;
+   
+}
