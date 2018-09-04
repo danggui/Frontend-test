@@ -15,10 +15,18 @@ const columns = [ {
     title: 'Price (per week)',
     dataIndex: 'price',
    
+  }, {
+    title: 'Action',
+    key: 'action',
+    render: (text, record) => (
+      <span>
+        <a href="javascript:;">Delete</a>
+      </span>
+    ),
   }];
 
 
-class TableS extends React.Component{
+class TableE extends React.Component{
    
     render(){
       const tableList = rooms.datas.map(
@@ -42,4 +50,4 @@ class TableS extends React.Component{
       }
 }
 
-export default TableS;
+export default TableE;

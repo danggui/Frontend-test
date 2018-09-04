@@ -7,6 +7,8 @@ import {
 } from 'react-router-dom';
 
 const goods = require('../../common/data/goods.json');
+const hotel = require('../../common/data/hotel.json');
+const room = require('../../common/data/room.json');
 const ERR_OK = 0;
 
 
@@ -28,18 +30,11 @@ const ERR_OK = 0;
 };
 
 
+
+
 export const Player = (props) => {
 
-  const fetchSelData = () => {
-    fetch(goods)
-        .then((res)=>{
-          if(goods.errno===ERR_OK){
-              const data=goods.datas;
-              alert(data);
-          }
-      }) .catch();
-     
-  } ;
+  
 
   const player = PlayerAPI.get(
     parseInt(props.match.params.number, 10)
@@ -54,7 +49,7 @@ export const Player = (props) => {
       <h1>{player.name} (#{player.number})</h1>
       <h2>Position: {player.position}</h2>
       <Link to='/edit'>Back</Link>
-      <button onClick={fetchSelData}></button>
+      <button onClick></button>
     </div>
   );
  
@@ -66,9 +61,9 @@ export const FullRoster = () => (
   <div>
     <ul>
       {
-        PlayerAPI.all().map(p => (
+       hotel.datas.map(p => (
           <li key={p.number}>
-            <Link to={`/edit/${p.number}`}>{p.name}</Link>
+            <Link to={`/edit/${p.hotel_id}`}>{p.hotel_name}</Link>
           </li>
         ))
       }

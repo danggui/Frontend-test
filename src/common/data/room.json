@@ -3,6 +3,7 @@
     "datas":
     [{
         "hotel_id":1,
+        "hotel_name":"Porperity 1",
         "room":[
             {
              "room_id":1,
@@ -21,6 +22,7 @@
     },
     {
         "hotel_id":2,
+        "hotel_name":"Porperity 2",
         "room":[
             {
              "room_id":1,

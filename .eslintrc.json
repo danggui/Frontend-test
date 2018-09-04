@@ -44,7 +44,9 @@
         "no-trailing-spaces": 0,
         "no-unused-vars": "off",
         "react/prop-types": 0,
-        "react/display-name": 0
+        "react/display-name": 0,
+        "no-console": 0
+
 
     }
 }

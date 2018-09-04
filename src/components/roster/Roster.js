@@ -6,15 +6,16 @@ import {
     Switch
   } from 'react-router-dom';
 import {Player,FullRoster} from '../player/Player';
+import { Divider } from 'antd';
 
 
 class Roster extends React.Component {
     render(){
         return (
-         <Switch>
+         <div>
             <Route exact path='/edit' component={FullRoster}/>
             <Route path='/edit/:number' component={Player}/>
-          </Switch>
+          </div>
         );
     }
 }

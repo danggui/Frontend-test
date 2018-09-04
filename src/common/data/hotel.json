@@ -1,0 +1,24 @@
+{
+    "errno":0,
+    "datas":
+    [{
+        "hotel_id":1,
+        "hotel_name":"Porperity 1"
+
+    },
+    {
+        "hotel_id":2,
+        "hotel_name":"Porperity 2"
+        
+    },{
+        "hotel_id":3,
+        "hotel_name":"Porperity 3"
+        
+    },{
+        "hotel_id":4,
+        "hotel_name":"Porperity 4"
+        
+    }
+]
+
+}
