@@ -24,6 +24,7 @@
     "plugins": [
         "react"
     ],
+    "parser": "babel-eslint",
     "rules": {
         "linebreak-style": [
             "error",
@@ -42,7 +43,8 @@
         "indent": ["off", "tab"],
         "no-trailing-spaces": 0,
         "no-unused-vars": "off",
-        "react/prop-types": 0
+        "react/prop-types": 0,
+        "react/display-name": 0
 
     }
 }

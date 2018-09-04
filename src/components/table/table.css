@@ -1,0 +1,12 @@
+.table_list{
+    padding: 0 2rem;
+    background:#ffffff;
+}
+
+.table_name{
+    font-size: 1.25rem;
+    height: 5rem;
+    line-height: 5rem;
+    text-align: left;
+    font-weight: 500;
+}

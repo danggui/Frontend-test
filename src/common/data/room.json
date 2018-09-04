@@ -1,0 +1,42 @@
+{
+    "errno":0,
+    "datas":
+    [{
+        "hotel_id":1,
+        "room":[
+            {
+             "room_id":1,
+             "name":"room1",
+             "price":"1231"
+            },{
+                "room_id":2,
+                "name":"room2",
+                "price":"1231"
+            },{
+                "room_id":3,
+                "name":"room3",
+                "price":"1231"
+            }
+        ]
+    },
+    {
+        "hotel_id":2,
+        "room":[
+            {
+             "room_id":1,
+             "name":"room1",
+             "price":"1231"
+            },{
+                "room_id":2,
+                "name":"room2",
+                "price":"1231"
+            },{
+                "room_id":3,
+                "name":"room3",
+                "price":"1231"
+            }
+        ]
+    }
+]
+
+}

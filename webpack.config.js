@@ -42,12 +42,26 @@ module.exports = {
         {
             test:/\.css$/,
             //use:['style-loader','css-loader'],
+            
             use: [
                 MiniCssExtractPlugin.loader,
                 'css-loader?modules',
                 'postcss-loader'
               ],
+                exclude:/node_modules/,
         },
+        {
+            test:/\.css$/,
+            //use:['style-loader','css-loader'],
+            
+            use: [
+                MiniCssExtractPlugin.loader,
+                'css-loader',
+                'postcss-loader'
+              ],
+                include: /node_modules/,
+        },
+        
         {
             test:/\.less$/,        
             use: [

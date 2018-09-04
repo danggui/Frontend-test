@@ -10,7 +10,8 @@ module.exports = {
             'redux',
             'react-redux',
             'react-router-redux',
-            'redux-thunk'
+            'redux-thunk',
+            'antd'
         ]
     },
     output: {
