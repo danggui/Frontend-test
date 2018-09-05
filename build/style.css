@@ -6158,20 +6158,77 @@ textarea.ant-input {
 }
 
 ._2zlLNIFxXQSmv5cBJgPfpT{
-    padding: 0 2rem;
-    background:#ffffff;
+    margin: 0 2rem;
+    
+}
+
+._3GgLNO2BsNCRwS6WkqtiTp{
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    background: #ffffff;
 }
 
 ._2EaDimM_mi8BSXSimve_y7{
-    font-size: 1.25rem;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    text-align: left;
+    font-weight: 500;
+}
+
+._2BbDmtFVe8DwXhOuQsbZ6Z{
+  
+    border: 1px solid #f0f0f0;
+}
+.sFkt-XEx2RSGqsBTh8osW{
+    border-right: 1px solid #e7e7e7;
+    background-color: #f9f9f9;
+    overflow: auto;
+}
+._3XTOSD1Yu1wDzfyijj3J0e{
+    flex: 1;
+    padding: 1.5rem;
+    overflow: auto;
+    background: #ffffff;
+}
+
+._1YNNCwZUU1ghRQsW0lsSjz{
+    padding: 1rem 8rem 1rem 2rem;
+    border-bottom:1px solid #e7e7e7;
+}
+
+._3W66GWS5olYc_lgxMQpjmB{
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    text-align: left;
+    font-weight: 500;
+}
+._3ojXxw7vE9lLWyNaRM7A1m{
+    height: 100%;
+    padding-bottom: 2rem;
+}
+._22W3NBKIr7pg_xnJv5G0AS{
+    color: #4c4c4c;
+    font-size: 1.5rem;
     height: 5rem;
     line-height: 5rem;
     text-align: left;
     font-weight: 500;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    margin-left: 2rem;
+}
+
+._28GhAQ1Ej0ediRovRAFqC8{
+    display: flex;
+    margin: 0 2rem;
+    border: 1px solid #e7e7e7;
+    height: calc(100% - 5rem);
 }
 ._3v-31svbdc5UC_LoPtK6Pc{
     flex: 1;
     background-color:#f0f0f0;
+    overflow: auto;
   }
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,

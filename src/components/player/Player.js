@@ -5,65 +5,71 @@ import {
   Link,
   Switch
 } from 'react-router-dom';
-
+import styles from './player.css';
+import TableE from '../table/TableE';
+import {Search,Room} from '../room/Room';
 const goods = require('../../common/data/goods.json');
 const hotel = require('../../common/data/hotel.json');
 const room = require('../../common/data/room.json');
 const ERR_OK = 0;
 
 
- const PlayerAPI = {
-  players: [
-    { number: 1, name: 'Ben Blocker', position: 'G' },
-    { number: 2, name: 'Dave Defender', position: 'D' },
-    { number: 3, name: 'Sam Sweeper', position: 'D' },
-    { number: 4, name: 'Matt Midfielder', position: 'M' },
-    { number: 5, name: 'William Winger', position: 'M' },
-    { number: 6, name: 'Fillipe Forward', position: 'F' }
-  ],
-  
-  all: function() { return this.players;},
-  get: function(id) {
-    const isPlayer = p => p.number === id;
-    return this.players.find(isPlayer);
+
+export class Content extends React.Component{
+  constructor(props){
+       super(props);
   }
-};
-
-
-
-
-export const Player = (props) => {
-
-  
-
-  const player = PlayerAPI.get(
-    parseInt(props.match.params.number, 10)
-  );
-  if (!player) {
-    return <div>Sorry, but the player was not found</div>;
+ 
+  render(){
+    if (!this.props.match.params.number) {
+      return <div>Sorry, but the player was not found</div>;
+     
+    }
+    return (
+      <div className={styles.content}>
+      <div className={styles.title}>Price</div>
+         <TableE id={this.props.match.params.number}/>
+        
+      </div>
+    );
    
   }
- 
-  return (
-    <div>
-      <h1>{player.name} (#{player.number})</h1>
-      <h2>Position: {player.position}</h2>
-      <Link to='/edit'>Back</Link>
-      <button onClick></button>
-    </div>
-  );
- 
-};
+}
 
-// The FullRoster iterates over all of the players and creates
-// a link to their profile page.
-export const FullRoster = () => (
-  <div>
+export class Add extends React.Component{
+  constructor(props){
+       super(props);
+  }
+ 
+  render(){
+
+    return (
+      <div className={styles.content}>
+        <div className={styles.part}>
+          <div className={styles.title}>Properity name</div>
+          <Search/>
+        </div>
+        <div className={styles.part}>
+          <div className={styles.title}>Price</div>
+         <Room/>
+         </div>
+      </div>
+    
+    );
+   
+  }
+}
+
+
+
+
+export const Category = () => (
+  <div className={styles.category}>
     <ul>
       {
        hotel.datas.map(p => (
-          <li key={p.number}>
-            <Link to={`/edit/${p.hotel_id}`}>{p.hotel_name}</Link>
+          <li key={p.number} className={styles.li_list}>
+            <Link to={`/edit/show/${p.hotel_id}`}>{p.hotel_name}</Link>
           </li>
         ))
       }

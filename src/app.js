@@ -27,15 +27,24 @@ import TodoList from './components/TodoList';
    import styles from  './css/app';
    
  
-const App = () => (
-  <div className={styles.max_height }>
+
+class App extends Component{
+  constructor(props){
+    super(props);
+  }
+  render(){
+    return (
+      <div className={styles.max_height }>
     <Header />
     <div className={styles.main }>
     <Left />
     <Page />
     </div>
   </div>
-);
+    );
+  }
+}
+
 
 ReactDOM.render((
   <HashRouter>

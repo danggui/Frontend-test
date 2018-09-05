@@ -1,0 +1,38 @@
+.total{
+    height: 100%;
+    padding-bottom: 2rem;
+}
+.title_list{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 2rem;
+}
+.title{
+    color: #4c4c4c;
+    font-size: 1.5rem;
+    height: 5rem;
+    line-height: 5rem;
+    text-align: left;
+    font-weight: 500;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  
+}
+
+.content{
+    display: flex;
+    margin: 0 2rem;
+    border: 1px solid #e7e7e7;
+    height: calc(100% - 5rem);
+}
+
+.button{
+    background-color:#38b2a6;
+    color: #ffffff;
+    height: 2.5rem;
+    line-height: 2.5rem;
+    padding: 0 1rem;
+    
+}

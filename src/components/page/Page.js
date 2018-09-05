@@ -1,6 +1,6 @@
 import React from 'react';
 import Home from   '../home/Home';
-import Roster from '../roster/Roster';
+import Edit from '../edit/Edit';
 import {
     Route,
     Switch
@@ -11,7 +11,7 @@ const Page = () => (
     <div className={styles.right}>
       <Switch>
         <Route exact path='/' component={Home}/>
-        <Route path='/edit' component={Roster}/>
+        <Route path='/edit' component={Edit}/>
       </Switch>
     </div>
   );
