@@ -30,19 +30,19 @@ export class Content extends React.Component{
       <div className={styles.title}>Price</div>
          <TableE id={this.props.match.params.number}/>
         
+         <Room/>
       </div>
     );
    
   }
 }
 
+  
 export class Add extends React.Component{
   constructor(props){
-       super(props);
-  }
- 
+    super(props);
+}
   render(){
-
     return (
       <div className={styles.content}>
         <div className={styles.part}>
@@ -51,7 +51,7 @@ export class Add extends React.Component{
         </div>
         <div className={styles.part}>
           <div className={styles.title}>Price</div>
-         <Room/>
+          <Room/>
          </div>
       </div>
     
@@ -62,12 +62,18 @@ export class Add extends React.Component{
 
 
 
+export class Category extends React.Component{
+  constructor(props){
+    super(props);
+    this.state={list:hotel.datas};
+}
 
-export const Category = () => (
-  <div className={styles.category}>
+render(){
+  return(
+    <div className={styles.category}>
     <ul>
       {
-       hotel.datas.map(p => (
+       this.state.list.map(p => (
           <li key={p.number} className={styles.li_list}>
             <Link to={`/edit/show/${p.hotel_id}`}>{p.hotel_name}</Link>
           </li>
@@ -75,4 +81,10 @@ export const Category = () => (
       }
     </ul>
   </div>
-);
+
+  );
+}
+}
+
+
+

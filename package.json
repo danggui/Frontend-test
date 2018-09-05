@@ -67,6 +67,7 @@
   },
   "dependencies": {
     "antd": "^3.9.1",
+    "events": "^3.0.0",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "react-redux": "^5.0.7",

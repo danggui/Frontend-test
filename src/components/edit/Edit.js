@@ -18,7 +18,7 @@ class Roster extends React.Component {
               <div className={styles.content}>
               <Category/>
               <Switch>
-              <Route  path='/edit/show/:number'  exact component={Content}/>
+              <Route  path='/edit/show/:number'  component={Content}/>
               <Route  path='/edit/add' component={Add} />
               </Switch>
               </div>
