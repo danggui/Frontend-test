@@ -30,13 +30,20 @@ export class Content extends React.Component{
       return <div>Sorry, but the player was not found</div>;
      
     }
+
+    const createHotel=this.state.list.find(item => { return item.id === this.props.match.params.number; });
+    let source=[];
+    if(createHotel.room){
+      source =[createHotel.room];
+    }
+    
     return (
       <div className={styles.content}>
       <div className={styles.title}>Price</div>
-         <TableE list={this.state.list}  id={
+         <TableE list={source}  id={
            this.props.match.params.number
          } />
-         <Room/>
+        
       </div>
     );
    
@@ -80,9 +87,7 @@ saveHotel=(e)=>{
 export class Category extends React.Component{
   constructor(props){
     super(props);
-    this.state={
-      list:goods.datas,
-    };
+    
   }
 
 render(){
@@ -90,7 +95,7 @@ render(){
     <div className={styles.category}>
     <ul>
       {
-       this.state.list.map(p => (
+       this.props.list.map(p => (
           <li key={p.id} className={styles.li_list}  >
             <Link to={`/edit/show/${p.id}`}>{p.name}</Link>
           </li>

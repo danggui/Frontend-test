@@ -1,5 +1,6 @@
 import React from 'react';
 import { Table} from 'antd';
+import {Room,Room2} from '../room/Room';
 import styles from './table.css';
 import emitter from '../event/Ev';
 
@@ -31,8 +32,8 @@ const columns = [ {
 class TableE extends React.Component{
   constructor(props){
     super(props);
-    
     this.state={
+        //list:props.list,
         msg:null,
     };
 }
@@ -44,6 +45,8 @@ componentDidMount () { //在组件挂载完成后声明一个自定义事件
 		this.setState({
 			msg: msg
     });
+
+    alert(234);
    
 	});
 }
@@ -58,14 +61,16 @@ componentWillUnmount () { //组件销毁前移除事件监听
  
 
  render(){
-    const createHotel=this.props.list.find(item => { return item.id === this.props.id; }).room;
-    const source= new Array().push(JSON.stringify(createHotel));
+   
         return(
-             <div>{alert(JSON.stringify(source))}</div>
+          <div>
+          <Table dataSource={this.props.list} columns={columns} />
+          <Room2/>
+          </div>
         );
 
-        
       }
+      
 }
 
 export default TableE;
