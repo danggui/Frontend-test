@@ -4,7 +4,11 @@
     {
       "id": "eyJ0eXBlIjoiUHJvcGVydHkiLCJpZCI6NzI1fQ==",
       "name": "urbanest North Terrace",
-      "currency": "GBP"
+      "currency": "GBP",
+      "room":{
+        "name":"room1",
+        "price":"1234567"
+      }
     },
     {
       "id": "eyJ0eXBlIjoiUHJvcGVydHkiLCJpZCI6NTg5fQ==",

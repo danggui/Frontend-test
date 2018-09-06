@@ -4,7 +4,7 @@ import styles from './table.css';
 import emitter from '../event/Ev';
 
 
-const rooms = require('../../common/data/room.json');
+
 
 
 
@@ -33,26 +33,35 @@ class TableE extends React.Component{
     super(props);
     
     this.state={
-        list:rooms.datas,
         msg:null,
     };
 }
-componentDidMount(){
-    // 声明一个自定义事件
-    // 在组件装载完成以后
-    this.eventEmitter = emitter.addListener('callMe',(msg)=>{
-        this.setState({
-            msg
-        });
+
+
+
+componentDidMount () { //在组件挂载完成后声明一个自定义事件
+	emitter.addListener('callMe', (msg) => {
+		this.setState({
+			msg: msg
     });
+   
+	});
 }
-// 组件销毁前移除事件监听
 
+componentWillUnmount () { //组件销毁前移除事件监听
+	emitter.removeListener('callMe', (msg) => {
+		this.setState({
+			msg: msg
+		});
+	});
+}
+ 
 
-
-    render(){
+ render(){
+    const createHotel=this.props.list.find(item => { return item.id === this.props.id; }).room;
+    const source= new Array().push(JSON.stringify(createHotel));
         return(
-              <Table columns={columns} dataSource={this.state.list[parseInt(this.props.id)-1].room} pagination={false}/>
+             <div>{alert(JSON.stringify(source))}</div>
         );
 
         
