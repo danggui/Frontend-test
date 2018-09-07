@@ -50,10 +50,8 @@ export class Search extends React.Component{
          this.state={
             room_name:'',
             price:'',
-            list:[]
-            
+            list:[]        
          };
- 
     }
     addName= (e)=>{
         this.setState({room_name: e.target.value});
@@ -98,8 +96,7 @@ export class Search extends React.Component{
          this.state={
             room_name:'',
             price:'',
-            list:[]
-            
+            list:[]  
          };
  
     }
@@ -121,12 +118,13 @@ export class Search extends React.Component{
     }
   
    render(){
-    function publ(){
-		return function () {
-            
-			emitter.emit('callMe', '我是发布者');
-		};
-	}
+    
+    const publ=() =>{
+        return () => {
+            // 触发自定义事件
+            emitter.emit('callMe', this.state.room_name,this.state.price,this.props.id);
+        };
+    };
 
     return (
         <div className={styles.outer}>
