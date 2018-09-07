@@ -108,21 +108,16 @@ export class Search extends React.Component{
         this.setState({price: e.target.value});
     }
    
-    createRoom =()=>{
-      this.setState(preState => ({
-        list: [...preState.list, {room_name:this.state.room_name,price:this.state.price}]
-      }));
-      this.setState({room_name: ''});
-      this.setState({price: ''});
-      
-    }
-  
+ 
    render(){
     
     const publ=() =>{
         return () => {
             // 触发自定义事件
             emitter.emit('callMe', this.state.room_name,this.state.price,this.props.id);
+            this.setState({room_name: ''});
+            this.setState({price: ''});
+
         };
     };
 
