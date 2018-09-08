@@ -1,17 +1,17 @@
 # Frontend-test
-First try
+First try with react &webpack & ant ui
 
 webpack,webpack cli建议先全局安装
-webpack4
+webpack4 的变更
 
-optimization: {
+~optimization: {
     minimizer: [
       new UglifyJsPlugin()
     ]
   }
 
-happypack
-dll:
+~happypack
+~dll:
   webpack.dll.config 
   webpack --config webpack.dll.config.js -p //build生成manifest.json
 
@@ -22,11 +22,14 @@ babel 7.0   https://github.com/babel/babel-upgrade
 babels-stage-presets removed...
 babel plugin
 
+
 react新的声明周期方法
 
 React Router 4
 
 按需加载组件（否则 import 文件太大），同时引入插件样式采用全局css
+
+避免func() 引起死循环，传参建议写成()=>func()形式
 
 
 

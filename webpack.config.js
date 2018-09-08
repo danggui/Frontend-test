@@ -157,10 +157,6 @@ module.exports = {
             manifest: require('./build/manifest.json'),
         }),
   
-
-       
-
-        
         //new webpack.HotModuleReplacementPlugin()//热更新配套插件
     
         ],

@@ -2,21 +2,20 @@
     "errno":0,
     "datas":
     [{
-        "hotel_id":1,
-        "hotel_name":"Porperity 1"
-
+        "name":"Porperity 1",
+        "currency": "GBP"
     },
     {
-        "hotel_id":2,
-        "hotel_name":"Porperity 2"
+        "name":"Porperity 2",
+        "currency": "GBP"
+    },{
+        
+        "name":"Porperity 3",
+        "currency": "USA"
         
     },{
-        "hotel_id":3,
-        "hotel_name":"Porperity 3"
-        
-    },{
-        "hotel_id":4,
-        "hotel_name":"Porperity 4"
+        "name":"Porperity 4",
+        "currency": "RMB"
         
     }
 ]

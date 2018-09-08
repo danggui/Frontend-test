@@ -17,7 +17,7 @@ class Home extends React.Component {
         return (
          <div >
              <div className={styles.title}>Properity List</div>
-            <TableS/>
+            <TableS list={this.props.list}/>
           </div>
         );
     }

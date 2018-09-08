@@ -1,7 +1,7 @@
 import React from 'react';
-import {Modal,Table,Input} from 'antd';
-import {Room,Room2} from '../room/Room';
-import styles from './table.css';
+import {Modal,Table,Divider,Input} from 'antd';
+import {Room2} from '../room/Room';
+
 import emitter from '../event/Ev';
 
 
@@ -11,91 +11,130 @@ import emitter from '../event/Ev';
 
 
 class TableE extends React.Component{
-
-  columns = [ {
-    title: 'Room name',
-    dataIndex: 'name',
- 
-  }, {
-    title: 'Price (per week)',
-    dataIndex: 'price',
-   
-  }, {
-    title: 'Action',
-    key: 'action',
-    render: (text, record) => (
-      <span>
-        <a href="javascript:;" onClick={this.showModal}>
-        Edit
-        </a>
-      </span>
-    ),
-  }];
-
-
   constructor(props){
     super(props);
     this.state={
-      room_name:'',
+      room:'',
+      room_id:'',
       price:'',
-      visible: false
+      visible: false,
+      editingKey: ''
     };
+    this.columns = [ {
+      title: 'Room name',
+      dataIndex: 'name',
+   
+    }, {
+      title: 'Price (per week)',
+      dataIndex: 'price',
+     
+    }, {
+      title: 'Action',
+      key: 'action',
+      render: (text, record) => (
+        <span>
+          <a href="javascript:;" onClick={()=>this.showModal(record)}>
+          Edit
+          </a>
+          <Divider type="vertical" />
+          <a href="javascript:;" onClick={()=>this.delete(record)}>
+          Delete
+          </a>
+        </span>
+      ),
+    }];
    
 }
-showModal = () => {
+
+delete=(record)=>{
+  emitter.emit('DeleteMe', record.name,record.price,this.props.id,record.room_id);
+}
+showModal = (record) => {
   this.setState({
     visible: true,
-    room:this.props.list.name,
-    price:this.props.list.price,
-
+    room:record.name,
+    price:record.price,
+    room_id:record.room_id
+    //editingKey: key 
   });
 }
-
 
 handleOk = (e) => {
-  this.setState({
-    visible: false,
-  });
-}
+    // 触发自定义事件
+    emitter.emit('EditMe', this.state.room,this.state.price,this.props.id,this.state.room_id);
+    this.setState({
+      visible: false,
+    });
 
+}
 handleCancel = (e) => {
   this.setState({
     visible: false,
   });
 }
 
-addName=()=>{
-
-}
-
-addPrice=()=>{
+addName= (e)=>{
+  this.setState({room: e.target.value});
   
 }
+addPrice= (e)=>{
+  this.setState({price: e.target.value});
+}
+
 
  render(){
-   
         return(
           <div>
           <Table dataSource={this.props.list} columns={this.columns} />
           <Room2 id={this.props.id}/>
-          <Modal  
-          title="Edit Room"
-          visible={this.state.visible}
-          onOk={this.handleOk}
-          onCancel={this.handleCancel}
-        >
-         
-         <div className='modal_title'>room name </div>
-         <Input  defaultValue={this.props.list.room}   onChange={this.addName}/> 
-         <div className='modal_title'>Price</div>
-         <Input  defaultValue={this.props.list.price} onChange={this.addPrice}/> 
-
-        </Modal>
+          <Mod visible={this.state.visible}  id={this.state.room_id} room={this.state.room} price={this.state.price} addName={this.addName} addPrice={this.addPrice} handleOk={this.handleOk} handleCancel={this.handleCancel}/>
           </div>
         );
 
       }
       
 }
+
+
+class Mod extends React.Component{
+
+  constructor(props){
+    super(props);
+    this.state={
+      room:'',
+      price:'',
+      editingKey: ''
+    };  
+}
+
+
+render(){
+   
+  return(
+    <Modal 
+    centered
+    list={this.props.list}
+    title="Edit Room"
+    visible={this.props.visible}
+    onOk={this.props.handleOk}
+    onCancel={this.props.handleCancel}
+   
+  >
+   
+   <div className='modal_title'>room name </div>
+   <Input value={this.props.room}   onChange={this.props.addName}/> 
+   <div className='modal_title'>Price</div>
+   <Input value={this.props.price}  onChange={this.props.addPrice}/> 
+
+  </Modal>
+  
+  );
+
+}
+
+}
+
+
+
 
 export default TableE;

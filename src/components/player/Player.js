@@ -7,12 +7,11 @@ import {
 } from 'react-router-dom';
 import styles from './player.css';
 import TableE from '../table/TableE';
-import {Search,Room} from '../room/Room';
+import {Search} from '../room/Room';
 
 import emitter from '../event/Ev';
-const goods= require('../../common/data/goods.json');
-const hotel = require('../../common/data/hotel.json');
-const room = require('../../common/data/room.json');
+const goods= require('../../common/data/hotel.json');
+
 const ERR_OK = 0;
 
 
@@ -53,9 +52,7 @@ export class Add extends React.Component{
    };
 
 }
-saveHotel=(e)=>{
-   alert(this.state.list);
-}
+
 
   render(){
     return (
@@ -64,11 +61,6 @@ saveHotel=(e)=>{
           <div className={styles.title}>Properity name</div>
           <Search option={this.state.list}/>
         </div>
-       
-         <div className={styles.button_list}>
-          <div  className={styles.buttonS} onClick={this.saveHotel}>Save</div>
-          <div  className={styles.buttonC} >Cancel</div>
-         </div>
       </div>
     
     );

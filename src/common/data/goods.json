@@ -6,6 +6,7 @@
       "name": "urbanest North Terrace",
       "currency": "GBP",
       "room":[{
+        "room_id":1,
         "name":"room1",
         "price":"1234567"
       }]

@@ -3,8 +3,6 @@ import { Table} from 'antd';
 import styles from './table.css';
 
 
-const rooms = require('../../common/data/room.json');
-
 
 
 const columns = [ {
@@ -21,11 +19,11 @@ const columns = [ {
 class TableS extends React.Component{
    
     render(){
-      const tableList = rooms.datas.map(
+      const tableList = this.props.list.map(
       (item,index)=>{
             return (
               <div key={index} className={styles.table_item}>
-              <div className={styles.table_name}>{item.hotel_name}</div>
+              <div className={styles.table_name}>{item.name}</div>
                  <Table columns={columns} dataSource={item.room} pagination={false}/>
              </div>
             );

@@ -21,14 +21,17 @@ export class Search extends React.Component{
          super(props);
          this.state={
              placeholder:'Select a properity',
-             hotel_name:'',
-             list:[]
+             name:'',
+             currency:'',
+           
+            
              
          };
     }
   
     handleChange=(value)=>{
-       this.setState({hotel_name:value});
+       this.setState({name:value});
+      
     }
 
    render(){
@@ -37,7 +40,7 @@ export class Search extends React.Component{
         <Select  placeholder={this.state.placeholder} style={{ width: '100%' }} onChange={this.handleChange} >
           {this.options}
         </Select>
-        <Room  hotel={this.state.hotel_name}/>
+        <Room  name={this.state.name} />
       </div>
       );
    }
@@ -48,43 +51,75 @@ export class Search extends React.Component{
     constructor(props){
          super(props);
          this.state={
-            room_name:'',
+            name:'',
             price:'',
-            list:[]        
+            room:[],
+            hotel:{}
+                  
          };
     }
     addName= (e)=>{
-        this.setState({room_name: e.target.value});
+       
+        this.setState({name: e.target.value});
         
     }
     addPrice= (e)=>{
+       
         this.setState({price: e.target.value});
     }
+    
    
     createRoom =()=>{
+        if(!this.state.name||this.state.name.length==0){
+            alert('You need to input room name!');
+             return;
+          }
       this.setState(preState => ({
-        list: [...preState.list, {hotel_name:this.props.hotel,room_name:this.state.room_name,price:this.state.price}]
+        room: [...preState.room, {name:this.state.name,price:this.state.price}]
       }));
-      this.setState({room_name: ''});
+
+      this.setState(preState => ({
+        hotel:{name:this.props.name,id:Math.random().toString(36).substr(2),room: preState.room}
+      }));
+      
+
+      
+      this.setState({name: ''});
       this.setState({price: ''});
+    }
+
+    cancel= (e)=>{
+        this.setState({name: ''});
+        this.setState({price: ''});
+        this.setState({room: []});
+    
     }
   
    render(){
-    function publ(){
-		return function () {
-			emitter.emit('callMe', '我是发布者');
-		};
-	}
+    const saveHotel=() =>{
+        return () => {
+            // 触发自定义事件
+            emitter.emit('AddHotel', this.state.hotel);
+
+        };
+    };
 
     return (
+        <frameElement>
         <div className={styles.outer}>
             <div className={styles.input_list}>
-                <Input size='large'  value={this.state.room_name} placeholder='Room name' style={{ width: '70%' }}  onChange={this.addName}/> 
+                <Input size='large'  value={this.state.name} placeholder='Room name' style={{ width: '70%' }}  onChange={this.addName}/> 
                 
                 <Input size='large' value={this.state.price}  placeholder='Price' style={{ width: '25%' }} onChange={this.addPrice}/>
             </div>
          <div  className={styles.button} onClick= {this.createRoom}>Add</div>
         </div>
+
+        <div className={styles.button_list}>
+        <div  className={styles.buttonS} onClick={saveHotel()}>Save</div>
+        <div  className={styles.buttonC} onClick={this.cancel}>Cancel</div>
+        </div>
+        </frameElement>
       );
    }
     
@@ -110,7 +145,6 @@ export class Search extends React.Component{
    
  
    render(){
-    
     const publ=() =>{
         return () => {
             // 触发自定义事件

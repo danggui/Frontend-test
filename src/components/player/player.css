@@ -33,24 +33,3 @@
     padding: 0 1rem;
     width: 5rem;
 }
-.button_list{
-    display: flex;
-    padding: 2rem;
-    margin-top: 5rem;
-}
-.buttonS{
-    background-color:#fcce01;
-    color: #000000;
-    height: 2.5rem;
-    line-height: 2.5rem;
-    padding: 0 1rem;
-    width: 10rem;
-}
-.buttonC{
-    background-color:#ffffff;
-    color: #000000;
-    height: 2.5rem;
-    line-height: 2.5rem;
-    padding: 0 1rem;
-    width: 10rem;
-}
